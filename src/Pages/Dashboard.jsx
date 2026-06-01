@@ -13,6 +13,7 @@ import dashboardBg from "../Assets/Images/dashboard-bg.jpeg";
 
 function Dashboard() {
   const logout = () => {
+    localStorage.removeItem("currentUser");
     window.location.href = "/";
   };
 
@@ -21,10 +22,14 @@ function Dashboard() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-3">
         <div className="container-fluid">
           <div className="d-flex align-items-center">
-            <img className="logo me-3" src={logo} alt="TripNest" />
-            <a className="navbar-brand text-warning fw-bold fs-3" href="#">
+            <img className="logo me-3" src={logo} alt="TripNest Logo" />
+
+            <Link
+              to="/dashboard"
+              className="navbar-brand text-warning fw-bold fs-3 text-decoration-none"
+            >
               TripNest
-            </a>
+            </Link>
           </div>
 
           <button
@@ -32,6 +37,9 @@ function Dashboard() {
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -40,27 +48,57 @@ function Dashboard() {
             className="collapse navbar-collapse justify-content-center"
             id="navbarNav"
           >
-            <ul className="navbar-nav gap-4">
+            <ul className="navbar-nav gap-4 align-items-center">
               <li className="nav-item">
-                <a className="nav-link active text-white fw-semibold" href="#">
+                <Link
+                  to="/dashboard"
+                  className="nav-link active text-white fw-semibold"
+                >
                   Home
-                </a>
+                </Link>
               </li>
 
-              <Link className="nav-link text-white fw-semibold" to="/packages">
-                Packages
-              </Link>
+              <li className="nav-item">
+                <Link
+                  to="/packages"
+                  className="nav-link text-white fw-semibold"
+                >
+                  Packages
+                </Link>
+              </li>
 
-             <Link to="/wishlist">Wishlist</Link>
+              <li className="nav-item">
+                <Link
+                  to="/wishlist"
+                  className="nav-link text-white fw-semibold"
+                >
+                  Wishlist
+                </Link>
+              </li>
 
-<Link to="/mybookings">Bookings</Link>
-              <Link to="/customize">
-                <button className="btn btn-warning">Customize Trip</button>
-              </Link>
+              <li className="nav-item">
+                <Link
+                  to="/mybookings"
+                  className="nav-link text-white fw-semibold"
+                >
+                  Bookings
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link to="/customize">
+                  <button className="btn btn-warning">
+                    Customize Trip
+                  </button>
+                </Link>
+              </li>
             </ul>
           </div>
 
-          <button className="btn btn-warning px-4 fw-semibold" onClick={logout}>
+          <button
+            className="btn btn-warning px-4 fw-semibold"
+            onClick={logout}
+          >
             Logout
           </button>
         </div>
@@ -79,8 +117,11 @@ function Dashboard() {
             Discover beautiful places, plan exciting adventures, and enjoy
             unforgettable travel experiences with TripNest.
           </p>
+
           <Link to="/packages">
-            <button className="btn btn-warning">Start Exploring</button>
+            <button className="btn btn-warning px-4 py-2 fw-semibold mt-3">
+              Start Exploring
+            </button>
           </Link>
         </div>
       </section>
@@ -116,8 +157,7 @@ function Dashboard() {
                 <div className="card-body text-center">
                   <h3>Pondicherry</h3>
                   <p>
-                    The place where you get to experience a unique blend of
-                    Indian and French cultures.
+                    Experience a unique blend of Indian and French cultures.
                   </p>
                   <button className="btn btn-warning">View Details</button>
                 </div>
