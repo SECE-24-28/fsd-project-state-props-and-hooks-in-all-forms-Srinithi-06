@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+}
+
+.login-container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+}
+
+.login-box{
+width:400px;
+padding:40px;
+border-radius:20px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+text-align:center;
+color:white;
+box-shadow:0px 5px 25px rgba(0,0,0,0.3);
+}
+
+.login-box img{
+width:90px;
+margin-bottom:15px;
+}
+
+.login-box h2{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.login-box p{
+margin-bottom:30px;
+color:#ddd;
+}
+
+.login-box form{
+display:flex;
+flex-direction:column;
+}
+
+.login-box input{
+padding:15px;
+margin-bottom:20px;
+border:none;
+border-radius:10px;
+outline:none;
+font-size:16px;
+}
+
+.login-box button{
+padding:15px;
+border:none;
+border-radius:30px;
+background-color:#f4b400;
+color:black;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.login-box button:hover{
+background:white;
+transform:scale(1.03);
+}
+
+.extra-links{
+margin-top:25px;
+display:flex;
+justify-content:space-between;
+}
+
+.extra-links a{
+text-decoration:none;
+color:#f4b400;
+font-size:14px;
+}

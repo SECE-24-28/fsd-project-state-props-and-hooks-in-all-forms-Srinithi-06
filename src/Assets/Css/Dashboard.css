@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background-color:#f5f5f5;
+}
+
+.logo{
+width:70px;
+height:auto;
+}
+
+.navbar{
+box-shadow:0px 3px 15px rgba(0,0,0,0.2);
+}
+
+.nav-link{
+transition:0.3s;
+}
+
+.nav-link:hover{
+color:#f4b400 !important;
+}
+
+.welcome-section{
+height:85vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+color:white;
+padding:0;
+}
+
+.welcome-section h1{
+font-size:70px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.welcome-section p{
+font-size:20px;
+max-width:850px;
+margin:auto;
+line-height:1.8;
+}
+
+.places-section{
+background-color:#ffffff;
+}
+
+.place-card{
+border:none;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+transition:0.4s;
+}
+
+.place-card:hover{
+transform:translateY(-10px);
+}
+
+.place-card img{
+height:250px;
+object-fit:cover;
+}
+
+.place-card h3{
+font-weight:700;
+margin-top:10px;
+}
+
+.place-card p{
+color:#555;
+line-height:1.7;
+padding:10px;
+}
+
+.place-card button{
+padding:10px 25px;
+border-radius:30px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+footer{
+font-size:15px;
+}
