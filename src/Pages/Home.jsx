@@ -5,9 +5,10 @@ import Hero from "../Components/Hero";
 import About from "../Components/About";
 import PopularDestinations from "../Components/PopularDestinations";
 import Categories from "../Components/Categories";
-import Testimonials from "../Components/Testimonials";
+
 import Contact from "../Components/Contact";
 import Footer from "../Components/Footer";
+import FAQ from "../Components/FAQ";
 
 function Home() {
   return (
@@ -16,9 +17,9 @@ function Home() {
       <Hero />
       <About />
       <PopularDestinations />
-      <Categories />
-      <Testimonials />
+      <Categories />      
       <Contact />
+      <FAQ />
       <Footer />
     </>
   );

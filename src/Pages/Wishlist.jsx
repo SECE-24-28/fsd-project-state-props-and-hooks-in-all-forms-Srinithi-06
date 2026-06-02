@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Wishlist() {
+  const navigate = useNavigate();
+
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
+    const currentUser = JSON.parse(
+      localStorage.getItem("currentUser")
+    );
+
+    if (!currentUser) {
+      alert("Please Login First");
+      navigate("/login");
+      return;
+    }
+
     const savedWishlist =
       JSON.parse(localStorage.getItem("wishlist")) || [];
 
     setWishlist(savedWishlist);
-  }, []);
+  }, [navigate]);
 
   const removeItem = (index) => {
     const updatedWishlist = [...wishlist];

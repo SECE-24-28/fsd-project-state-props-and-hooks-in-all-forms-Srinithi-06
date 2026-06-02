@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MyBookings() {
+  const navigate = useNavigate();
+
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
+    const currentUser = JSON.parse(
+      localStorage.getItem("currentUser")
+    );
+
+    if (!currentUser) {
+      alert("Please Login First");
+      navigate("/login");
+      return;
+    }
+
     const savedBookings =
       JSON.parse(localStorage.getItem("bookings")) || [];
 
     setBookings(savedBookings);
-  }, []);
+  }, [navigate]);
 
   const cancelBooking = (index) => {
     const updatedBookings = [...bookings];
@@ -21,6 +34,8 @@ function MyBookings() {
       "bookings",
       JSON.stringify(updatedBookings)
     );
+
+    alert("Booking Cancelled Successfully");
   };
 
   return (

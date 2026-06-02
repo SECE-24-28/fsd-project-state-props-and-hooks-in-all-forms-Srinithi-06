@@ -73,12 +73,25 @@ function Categories() {
             }}
           >
             <div
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(-12px) scale(1.03)";
+                e.currentTarget.style.boxShadow =
+                  "0 15px 35px rgba(244,180,0,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(0px) scale(1)";
+                e.currentTarget.style.boxShadow =
+                  "none";
+              }}
               style={{
                 background: "#111",
                 borderRadius: "20px",
                 overflow: "hidden",
                 cursor: "pointer",
-                transition: "0.3s",
+                transition: "all 0.4s ease",
+                border: "1px solid #222",
               }}
             >
               <img
@@ -88,30 +101,46 @@ function Categories() {
                   width: "100%",
                   height: "250px",
                   objectFit: "cover",
+                  transition: "0.5s",
                 }}
               />
 
               <div
                 style={{
-                  padding: "20px",
+                  padding: "25px",
                   textAlign: "center",
                 }}
               >
                 <h3
                   style={{
                     color: "#f4b400",
+                    fontSize: "26px",
+                    marginBottom: "10px",
                   }}
                 >
                   {item.title}
                 </h3>
 
-                <p
+                <h5
                   style={{
                     color: "#ccc",
+                    fontSize: "16px",
+                    fontWeight: "400",
+                    marginBottom: "15px",
                   }}
                 >
                   Explore amazing {item.title} packages
-                </p>
+                </h5>
+
+                <span
+                  style={{
+                    color: "#f4b400",
+                    fontWeight: "bold",
+                    fontSize: "15px",
+                  }}
+                >
+                  Explore Packages →
+                </span>
               </div>
             </div>
           </Link>

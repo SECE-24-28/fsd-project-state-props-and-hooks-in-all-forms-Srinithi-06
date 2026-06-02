@@ -2,10 +2,26 @@ import React from "react";
 
 function About() {
   const features = [
-    "Best Price Guarantee",
-    "24/7 Customer Support",
-    "Safe & Secure Travel",
-    "Customized Packages",
+    {
+      title: "Customized Tours",
+      desc:
+        "Travel plans designed according to your budget and preferences.",
+    },
+    {
+      title: "Affordable Pricing",
+      desc:
+        "Best travel experiences at competitive prices.",
+    },
+    {
+      title: "24/7 Support",
+      desc:
+        "Dedicated customer support throughout your journey.",
+    },
+    {
+      title: "Trusted Guides",
+      desc:
+        "Professional travel experts and verified tour guides.",
+    },
   ];
 
   return (
@@ -19,39 +35,63 @@ function About() {
     >
       <h2
         style={{
-          color: "#f4b400",
           textAlign: "center",
-          fontSize: "45px",
+          color: "#f4b400",
+          fontSize: "50px",
+          marginBottom: "20px",
         }}
       >
         Why Choose TripNest?
       </h2>
 
+      <h3
+        style={{
+          textAlign: "center",
+          color: "#ccc",
+          maxWidth: "800px",
+          margin: "0 auto 50px",
+          
+        }}
+      >
+        We create memorable travel experiences with
+        premium destinations, customized packages and
+        exceptional customer support.
+      </h3>
+
       <div
         style={{
           display: "grid",
           gridTemplateColumns:
-            "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "25px",
-          marginTop: "50px",
+            "repeat(auto-fit,minmax(300px,1fr))",
+          gap: "30px",
         }}
       >
-        {features.map((item) => (
+        {features.map((item, index) => (
           <div
-            key={item}
+            key={index}
             style={{
-              background: "#181818",
-              padding: "30px",
+              background: "#811e1e",
+              padding: "40px",
               borderRadius: "20px",
-              textAlign: "center",
-              border: "1px solid #333",
+              border: "1px solid #bc1212",
             }}
           >
-            <h3 style={{ color: "#f4b400" }}>
-              ✓
+            <h3
+              style={{
+                color: "#f4b400",
+                marginBottom: "15px",
+              }}
+            >
+              {item.title}
             </h3>
 
-            <p>{item}</p>
+            <p
+              style={{
+                color: "#ccc",
+              }}
+            >
+              {item.desc}
+            </p>
           </div>
         ))}
       </div>

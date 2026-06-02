@@ -14,6 +14,8 @@ import Honeymoon from "./Pages/Honeymoon";
 import Wishlist from "./Pages/Wishlist";
 import MyBookings from "./Pages/MyBookings";
 import Customize from "./Pages/Customize";
+import TermsConditions from "./Pages/TermsConditions";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
         <Route path="/mybookings" element={<MyBookings />} />
         <Route path="/customize" element={<Customize />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
+        <Route path="/terms" element={<TermsConditions />} />
+<Route path="/privacy" element={<PrivacyPolicy />} />
 
       </Routes>
     </BrowserRouter>

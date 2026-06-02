@@ -49,6 +49,7 @@ function PopularDestinations() {
           gridTemplateColumns:
             "repeat(auto-fit,minmax(280px,1fr))",
           gap: "30px",
+          
         }}
       >
         {places.map((place) => (
@@ -59,6 +60,8 @@ function PopularDestinations() {
               borderRadius: "20px",
               overflow: "hidden",
               transition: "0.4s",
+              boxShadow: "0 0 20px red",
+
             }}
           >
             <img

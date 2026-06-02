@@ -1,54 +1,103 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CategoryNavbar() {
-  const linkStyle = {
-    color: "white",
-    textDecoration: "none",
-    padding: "12px 25px",
-    borderRadius: "30px",
-    border: "1px solid #f4b400",
-    transition: "0.3s",
-    fontWeight: "600",
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("adminUser");
+
+    alert("Logged Out Successfully");
+
+    navigate("/");
   };
 
   return (
-    <div
+    <nav
       style={{
-        background: "#111",
-        padding: "20px",
+        background: "#000",
+        padding: "15px 50px",
         display: "flex",
-        justifyContent: "center",
-        gap: "15px",
-        flexWrap: "wrap",
-        borderBottom: "1px solid #f4b400",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderBottom: "1px solid #222",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
       }}
     >
-      <Link to="/packages" style={linkStyle}>
-        Packages
-      </Link>
+      <h2
+        style={{
+          color: "#f4b400",
+        }}
+      >
+        TripNest
+      </h2>
 
-      <Link to="/international" style={linkStyle}>
-        International
-      </Link>
+      <div
+        style={{
+          display: "flex",
+          gap: "25px",
+          alignItems: "center",
+        }}
+      >
+        <Link to="/" style={linkStyle}>
+          Home
+        </Link>
 
-      <Link to="/family" style={linkStyle}>
-        Family
-      </Link>
+        <Link
+          to="/packages"
+          style={linkStyle}
+        >
+          Packages
+        </Link>
 
-      <Link to="/friends" style={linkStyle}>
-        Friends
-      </Link>
+        <Link
+          to="/customize"
+          style={linkStyle}
+        >
+          Customize Trip
+        </Link>
 
-      <Link to="/adventure" style={linkStyle}>
-        Adventure
-      </Link>
+        <Link
+          to="/wishlist"
+          style={linkStyle}
+        >
+          Wishlist
+        </Link>
 
-      <Link to="/honeymoon" style={linkStyle}>
-        Honeymoon
-      </Link>
-    </div>
+        <Link
+          to="/mybookings"
+          style={linkStyle}
+        >
+          My Bookings
+        </Link>
+
+        <button
+          onClick={logout}
+          style={logoutBtn}
+        >
+          Logout
+        </button>
+      </div>
+    </nav>
   );
 }
+
+const linkStyle = {
+  color: "white",
+  textDecoration: "none",
+  fontWeight: "600",
+};
+
+const logoutBtn = {
+  background: "#dc3545",
+  color: "white",
+  border: "none",
+  padding: "10px 20px",
+  borderRadius: "8px",
+  cursor: "pointer",
+};
 
 export default CategoryNavbar;
