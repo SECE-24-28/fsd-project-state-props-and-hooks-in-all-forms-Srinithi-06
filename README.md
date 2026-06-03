@@ -21,12 +21,14 @@
           Yellow
           White
           Added static travel package cards.
+          
 **Day 3 - JavaScript Functionality**
           Added navigation functionality.
           Implemented category redirections.
           Added dynamic interactions using JavaScript.
           Improved UI responsiveness.
           Added hover effects and animations.
+          
 **Day 4 - React Project Setup**
           Created React application structure.
           Configured React Router.
@@ -40,6 +42,7 @@
           Converted static pages into React components.
           Organized project folders and assets.
 **Day 5 - User Module Development**
+
           Developed Login and Signup pages.
           Implemented Local Storage Authentication.
           Added User Dashboard.
@@ -50,6 +53,7 @@
           Implemented route protection for authenticated users.
           Added logout functionality.
 **Day 6 - Travel Management & Admin Module**
+
           Developed category pages:
           International Tours
           Family Tours
