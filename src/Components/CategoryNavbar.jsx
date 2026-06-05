@@ -1,5 +1,8 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  NavLink,
+  useNavigate,
+} from "react-router-dom";
 
 function CategoryNavbar() {
   const navigate = useNavigate();
@@ -25,54 +28,85 @@ function CategoryNavbar() {
         position: "sticky",
         top: 0,
         zIndex: 1000,
+        backdropFilter: "blur(10px)",
       }}
     >
+      {/* Logo */}
+
       <h2
         style={{
           color: "#f4b400",
+          fontSize: "34px",
+          fontWeight: "700",
+          margin: 0,
         }}
       >
         TripNest
       </h2>
 
+      {/* Navigation */}
+
       <div
         style={{
           display: "flex",
-          gap: "25px",
+          gap: "15px",
           alignItems: "center",
         }}
       >
-        <Link to="/" style={linkStyle}>
+        <NavLink
+          to="/"
+          style={({ isActive }) =>
+            isActive
+              ? activeLink
+              : linkStyle
+          }
+        >
           Home
-        </Link>
+        </NavLink>
 
-        <Link
+        <NavLink
           to="/packages"
-          style={linkStyle}
+          style={({ isActive }) =>
+            isActive
+              ? activeLink
+              : linkStyle
+          }
         >
           Packages
-        </Link>
+        </NavLink>
 
-        <Link
+        <NavLink
           to="/customize"
-          style={linkStyle}
+          style={({ isActive }) =>
+            isActive
+              ? activeLink
+              : linkStyle
+          }
         >
           Customize Trip
-        </Link>
+        </NavLink>
 
-        <Link
+        <NavLink
           to="/wishlist"
-          style={linkStyle}
+          style={({ isActive }) =>
+            isActive
+              ? activeLink
+              : linkStyle
+          }
         >
           Wishlist
-        </Link>
+        </NavLink>
 
-        <Link
+        <NavLink
           to="/mybookings"
-          style={linkStyle}
+          style={({ isActive }) =>
+            isActive
+              ? activeLink
+              : linkStyle
+          }
         >
           My Bookings
-        </Link>
+        </NavLink>
 
         <button
           onClick={logout}
@@ -86,18 +120,35 @@ function CategoryNavbar() {
 }
 
 const linkStyle = {
-  color: "white",
+  color: "#ddd",
   textDecoration: "none",
   fontWeight: "600",
+  padding: "10px 18px",
+  borderRadius: "10px",
+  transition: "all 0.3s ease",
+};
+
+const activeLink = {
+  color: "#000",
+  background: "#f4b400",
+  textDecoration: "none",
+  fontWeight: "700",
+  padding: "10px 18px",
+  borderRadius: "10px",
+  boxShadow:
+    "0 0 15px rgba(244,180,0,0.4)",
+  transition: "all 0.3s ease",
 };
 
 const logoutBtn = {
   background: "#dc3545",
-  color: "white",
+  color: "#fff",
   border: "none",
-  padding: "10px 20px",
-  borderRadius: "8px",
+  padding: "12px 22px",
+  borderRadius: "10px",
   cursor: "pointer",
+  fontWeight: "600",
+  transition: "0.3s",
 };
 
 export default CategoryNavbar;

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import axios from "axios";
+
 
 function Login() {
   const navigate = useNavigate();
@@ -65,15 +69,44 @@ function Login() {
 
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#000",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+   <div
+  style={{
+    minHeight: "100vh",
+    background: "#000",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+  }}
+>
+
+      <Link
+  to="/"
+  style={{
+    position: "absolute",
+    top: "30px",
+    left: "30px",
+    textDecoration: "none",
+  }}
+>
+  <button
+    style={{
+      background: "#f4b400",
+      color: "#000",
+      border: "none",
+      padding: "12px 25px",
+      borderRadius: "30px",
+      fontWeight: "bold",
+      cursor: "pointer",
+      fontSize: "15px",
+      boxShadow:
+        "0 0 15px rgba(244,180,0,0.3)",
+      transition: "0.3s",
+    }}
+  >
+    ← Home
+  </button>
+</Link>
       <div
         style={{
           width: "420px",

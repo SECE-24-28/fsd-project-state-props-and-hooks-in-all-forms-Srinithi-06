@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import CategoryNavbar from "../Components/CategoryNavbar";
 function Customize() {
 const navigate = useNavigate();
 
@@ -63,6 +63,7 @@ setFormData({
 
 };
 
+
 return (
 <div
 style={{
@@ -72,6 +73,7 @@ color: "white",
 padding: "60px 8%",
 }}
 >
+  <CategoryNavbar />
 <h1
 style={{
 textAlign: "center",

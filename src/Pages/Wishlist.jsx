@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import CategoryNavbar from "../Components/CategoryNavbar";
 
 function Wishlist() {
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ const removeItem = (index) => {
         padding: "60px 8%",
       }}
     >
+      <CategoryNavbar />
       <h1
         style={{
           textAlign: "center",

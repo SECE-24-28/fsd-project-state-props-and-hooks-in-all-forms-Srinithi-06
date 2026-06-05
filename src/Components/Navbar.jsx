@@ -6,74 +6,85 @@ function Navbar() {
   return (
     <nav
       style={{
-        background: "#000",
-        padding: "12px 60px",
+        background: "rgba(0,0,0,0.92)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        padding: "15px 7%",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         position: "sticky",
         top: 0,
         zIndex: 1000,
-        borderBottom: "1px solid #222",
+        borderBottom: "1px solid rgba(244,180,0,0.15)",
+        boxShadow:
+          "0 5px 25px rgba(0,0,0,0.4)",
       }}
     >
+      {/* Logo */}
+
       <Link
         to="/"
         style={{
           textDecoration: "none",
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
         }}
       >
-        <div
+        <img
+          src={logo}
+          alt="TripNest Logo"
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
+            width: "65px",
+            height: "65px",
+            objectFit: "contain",
+            filter:
+              "drop-shadow(0 0 10px rgba(244,180,0,0.5))",
+          }}
+        />
+
+        <h1
+          style={{
+            color: "#f4b400",
+            fontSize: "42px",
+            fontWeight: "800",
+            margin: 0,
+            letterSpacing: "1px",
           }}
         >
-          <img
-            src={logo}
-            alt="TripNest Logo"
-            style={{
-              width: "55px",
-              height: "55px",
-              objectFit: "contain",
-            }}
-          />
-
-          <h1
-            style={{
-              color: "#f4b400",
-              fontSize: "40px",
-              fontWeight: "700",
-              margin: 0,
-            }}
-          >
-            TripNest
-          </h1>
-        </div>
+          TripNest
+        </h1>
       </Link>
+
+      {/* Navigation */}
 
       <div
         style={{
           display: "flex",
           alignItems: "center",
+          gap: "15px",
         }}
       >
-        <a href="#about" style={linkStyle}>
+        <a href="#about" style={navLink}>
           About
         </a>
 
-        <a href="#categories" style={linkStyle}>
+        <a href="#categories" style={navLink}>
           Categories
         </a>
 
-        <a href="#contact" style={linkStyle}>
+        <a href="#contact" style={navLink}>
           Contact
         </a>
-        
-        
-        <Link to="/login">
-          <button style={buttonStyle}>
+
+        <Link
+          to="/login"
+          style={{
+            textDecoration: "none",
+          }}
+        >
+          <button style={loginBtn}>
             Login
           </button>
         </Link>
@@ -82,23 +93,29 @@ function Navbar() {
   );
 }
 
-const linkStyle = {
+const navLink = {
   color: "white",
   textDecoration: "none",
-  marginRight: "35px",
-  fontSize: "20px",
+  fontSize: "18px",
   fontWeight: "600",
+  padding: "10px 18px",
+  borderRadius: "30px",
+  transition: "0.3s",
 };
 
-const buttonStyle = {
-  background: "#f4b400",
+const loginBtn = {
+  background:
+    "linear-gradient(135deg,#f4b400,#ffcc00)",
   color: "#000",
   border: "none",
-  padding: "12px 30px",
-  borderRadius: "30px",
+  padding: "13px 32px",
+  borderRadius: "40px",
   cursor: "pointer",
   fontWeight: "700",
-  fontSize: "18px",
+  fontSize: "17px",
+  boxShadow:
+    "0 0 15px rgba(244,180,0,0.4)",
+  transition: "0.3s",
 };
 
 export default Navbar;

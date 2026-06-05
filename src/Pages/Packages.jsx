@@ -1,47 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import CategoryNavbar from "../Components/CategoryNavbar";
 
+import paris from "../Assets/Images/dubai.webp";
+import kerala from "../Assets/Images/mysore.jpg";
+import goa from "../Assets/Images/goa.webp";
+import rishikesh from "../Assets/Images/adventure background.jpg";
+import maldives from "../Assets/Images/maldives.webp";
+
 function Packages() {
-  const [packages, setPackages] = useState([]);
-
-  useEffect(() => {
-    const savedPackages =
-      JSON.parse(localStorage.getItem("packages")) || [];
-
-    setPackages(savedPackages);
-  }, []);
-
   const categories = [
     {
       name: "International Tours",
       path: "/international",
-      icon: "🌍",
-      desc: "Explore world-famous destinations and luxury international trips.",
+      image: paris,
+      desc:
+        "Explore world-famous destinations and luxury international trips.",
     },
+
     {
       name: "Family Packages",
       path: "/family",
-      icon: "👨‍👩‍👧‍👦",
-      desc: "Memorable family vacations with comfort and fun.",
+      image: kerala,
+      desc:
+        "Memorable family vacations with comfort and fun.",
     },
+
     {
       name: "Friends Tours",
       path: "/friends",
-      icon: "🎉",
-      desc: "Adventure and fun-filled trips with your friends.",
+      image: goa,
+      desc:
+        "Adventure and fun-filled trips with your friends.",
     },
+
     {
       name: "Adventure Trips",
       path: "/adventure",
-      icon: "🏔️",
-      desc: "Trekking, rafting, biking and thrilling experiences.",
+      image: rishikesh,
+      desc:
+        "Trekking, rafting, biking and thrilling experiences.",
     },
+
     {
       name: "Honeymoon Packages",
       path: "/honeymoon",
-      icon: "❤️",
-      desc: "Romantic destinations for unforgettable moments.",
+      image: maldives,
+      desc:
+        "Romantic destinations for unforgettable moments.",
     },
   ];
 
@@ -51,185 +57,143 @@ function Packages() {
         background: "#000",
         minHeight: "100vh",
         color: "white",
-        padding: "80px 8%",
       }}
     >
       <CategoryNavbar />
 
-      <h1
-        style={{
-          textAlign: "center",
-          color: "#f4b400",
-          marginBottom: "15px",
-          fontSize: "55px",
-        }}
-      >
-        Travel Packages
-      </h1>
+      {/* Hero Section */}
 
-      <p
+      <section
         style={{
           textAlign: "center",
-          color: "#ccc",
-          maxWidth: "900px",
-          margin: "auto",
-          marginBottom: "60px",
+          padding: "80px 8% 50px",
         }}
       >
-        Choose your favorite category and start planning your dream vacation.
-      </p>
+        <h1
+          style={{
+            color: "#f4b400",
+            fontSize: "60px",
+            fontWeight: "700",
+            marginBottom: "20px",
+          }}
+        >
+          Explore Travel Packages
+        </h1>
+
+        <p
+          style={{
+            color: "#ccc",
+            fontSize: "20px",
+            maxWidth: "850px",
+            margin: "auto",
+            lineHeight: "1.8",
+          }}
+        >
+          Discover amazing destinations, luxury tours,
+          adventure trips and unforgettable travel
+          experiences designed just for you.
+        </p>
+      </section>
 
       {/* Category Cards */}
 
-      <div
+      <section
         style={{
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit,minmax(320px,1fr))",
-          gap: "30px",
-          marginBottom: "80px",
+          padding: "20px 8% 80px",
         }}
       >
-        {categories.map((item, index) => (
-          <div
-            key={index}
-            style={{
-              background: "#111",
-              borderRadius: "20px",
-              padding: "35px",
-              border: "1px solid #f4b400",
-              textAlign: "center",
-              transition: "0.3s",
-            }}
-          >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit,minmax(320px,1fr))",
+            gap: "35px",
+          }}
+        >
+          {categories.map((item, index) => (
             <div
+              key={index}
               style={{
-                fontSize: "60px",
-                marginBottom: "20px",
+                position: "relative",
+                height: "350px",
+                borderRadius: "25px",
+                overflow: "hidden",
+                boxShadow:
+                  "0 0 25px rgba(244,180,0,0.15)",
+                border:
+                  "1px solid rgba(244,180,0,0.2)",
+                transition: "0.4s",
               }}
             >
-              {item.icon}
-            </div>
-
-            <h3
-              style={{
-                color: "#f4b400",
-                marginBottom: "15px",
-              }}
-            >
-              {item.name}
-            </h3>
-
-            <p
-              style={{
-                color: "#ccc",
-                marginBottom: "25px",
-              }}
-            >
-              {item.desc}
-            </p>
-
-            <Link to={item.path}>
-              <button
+              <img
+                src={item.image}
+                alt={item.name}
                 style={{
-                  background: "#f4b400",
-                  border: "none",
-                  padding: "12px 30px",
-                  borderRadius: "30px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
                 }}
-              >
-                Explore
-              </button>
-            </Link>
-          </div>
-        ))}
-      </div>
+              />
 
-      {/* Admin Added Packages */}
-
-      {packages.length > 0 && (
-        <>
-          <h2
-            style={{
-              textAlign: "center",
-              color: "#f4b400",
-              marginBottom: "40px",
-              fontSize: "40px",
-            }}
-          >
-            Newly Added Packages
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(300px,1fr))",
-              gap: "30px",
-            }}
-          >
-            {packages.map((pkg, index) => (
               <div
-                key={index}
                 style={{
-                  background: "#111",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  border: "1px solid #333",
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.25))",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  padding: "25px",
                 }}
               >
-                {pkg.image && (
-                  <img
-                    src={pkg.image}
-                    alt={pkg.name}
-                    style={{
-                      width: "100%",
-                      height: "220px",
-                      objectFit: "cover",
-                    }}
-                  />
-                )}
-
-                <div
+                <h2
                   style={{
-                    padding: "20px",
+                    color: "#f4b400",
+                    marginBottom: "12px",
+                    fontSize: "30px",
                   }}
                 >
-                  <h3
+                  {item.name}
+                </h2>
+
+                <p
+                  style={{
+                    color: "#ddd",
+                    lineHeight: "1.7",
+                    marginBottom: "20px",
+                  }}
+                >
+                  {item.desc}
+                </p>
+
+                <Link
+                  to={item.path}
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <button
                     style={{
-                      color: "#f4b400",
+                      background:
+                        "linear-gradient(135deg,#f4b400,#ffcc00)",
+                      color: "#000",
+                      border: "none",
+                      padding: "12px 28px",
+                      borderRadius: "30px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      fontSize: "15px",
                     }}
                   >
-                    {pkg.name}
-                  </h3>
-
-                  <p>
-                    <strong>Category:</strong>{" "}
-                    {pkg.category}
-                  </p>
-
-                  <p>
-                    <strong>Duration:</strong>{" "}
-                    {pkg.duration}
-                  </p>
-
-                  <p>{pkg.description}</p>
-
-                  <h4
-                    style={{
-                      color: "#f4b400",
-                    }}
-                  >
-                    {pkg.price}
-                  </h4>
-                </div>
+                    Explore Now →
+                  </button>
+                </Link>
               </div>
-            ))}
-          </div>
-        </>
-      )}
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

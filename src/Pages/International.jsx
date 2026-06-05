@@ -8,7 +8,7 @@ import switzerland from "../Assets/Images/switzerland.webp";
 import maldives from "../Assets/Images/maldives.webp";
 import bali from "../Assets/Images/bali.webp";
 import singapore from "../Assets/Images/singapore.jpg";
-
+import bg from "../Assets/Images/international-bg.avif";
 
 function International() {
 const tours = [
@@ -78,41 +78,130 @@ color: "white",
 }}
 > <CategoryNavbar />
 
-```
-  <section
+
+ <section
+  style={{
+    height: "60vh",
+    backgroundImage: `linear-gradient(
+      rgba(0,0,0,0.65),
+      rgba(0,0,0,0.75)
+    ),
+    url(${bg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "0 8%",
+  }}
+>
+  <h1
     style={{
-      padding: "100px 8%",
-      textAlign: "center",
-      background:
-        "linear-gradient(to right,#000,#111)",
+      color: "#fff",
+      fontSize: "72px",
+      fontWeight: "700",
+      marginBottom: "20px",
+      textShadow: "0 0 20px rgba(0,0,0,0.6)",
     }}
   >
-    <h1
-      style={{
-        color: "#f4b400",
-        fontSize: "60px",
-        marginBottom: "20px",
-      }}
-    >
-      International Tours
-    </h1>
+    International Tours
+  </h1>
 
-    <p
-      style={{
-        color: "#ccc",
-        fontSize: "20px",
-        maxWidth: "900px",
-        margin: "auto",
-      }}
-    >
-      Discover luxury destinations and unforgettable
-      international travel experiences.
-    </p>
-  </section>
+  <p
+    style={{
+      color: "#eee",
+      fontSize: "22px",
+      maxWidth: "900px",
+      lineHeight: "1.8",
+    }}
+  >
+    Explore world-famous destinations,
+    luxury experiences and unforgettable
+    international adventures.
+  </p>
+</section>
+<section
+  style={{
+    padding: "40px 8%",
+    background: "#080808",
+  }}
+>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns:
+        "repeat(auto-fit,minmax(200px,1fr))",
+      gap: "25px",
+      textAlign: "center",
+    }}
+  >
+    <div>
+      <h1
+        style={{
+          color: "#f4b400",
+          marginBottom: "10px",
+        }}
+      >
+        50+
+      </h1>
+
+      <p style={{ color: "#ccc" }}>
+        Countries
+      </p>
+    </div>
+
+    <div>
+      <h1
+        style={{
+          color: "#f4b400",
+          marginBottom: "10px",
+        }}
+      >
+        10K+
+      </h1>
+
+      <p style={{ color: "#ccc" }}>
+        Travelers
+      </p>
+    </div>
+
+    <div>
+      <h1
+        style={{
+          color: "#f4b400",
+          marginBottom: "10px",
+        }}
+      >
+        500+
+      </h1>
+
+      <p style={{ color: "#ccc" }}>
+        Tours
+      </p>
+    </div>
+
+    <div>
+      <h1
+        style={{
+          color: "#f4b400",
+          marginBottom: "10px",
+        }}
+      >
+        24/7
+      </h1>
+
+      <p style={{ color: "#ccc" }}>
+        Support
+      </p>
+    </div>
+  </div>
+</section>
 
   <section
     style={{
-      padding: "60px 8%",
+   padding: "50px 8% 80px",
     }}
   >
     <div
@@ -151,7 +240,6 @@ color: "white",
 </div>
   </section>
 </div>
-
 
 );
 }

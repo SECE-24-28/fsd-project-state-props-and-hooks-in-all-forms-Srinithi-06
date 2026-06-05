@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import internationalImg from "../Assets/Images/international-background.jpg";
 import familyImg from "../Assets/Images/family background.jpg";
-import friendsImg from "../Assets/Images/friends background.jpg";
+import friendsImg from "../Assets/Images/friends-background.jpg";
 import adventureImg from "../Assets/Images/adventure background.jpg";
 import honeymoonImg from "../Assets/Images/honeymoon background.jpg";
 

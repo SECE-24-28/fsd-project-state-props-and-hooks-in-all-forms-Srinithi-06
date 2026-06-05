@@ -1,35 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import heroImage from "../Assets/Images/dashboard-bg.jpeg";
+import heroBg from "../Assets/Images/packages-db.avif";
 
 function Hero() {
   return (
     <section
       style={{
-        background: "#000",
-        minHeight: "72vh",
+        minHeight: "90vh",
+        backgroundImage: `
+          linear-gradient(
+            rgba(0,0,0,0.70),
+            rgba(0,0,0,0.75)
+          ),
+          url(${heroBg})
+        `,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
-        padding: "20px 8% 40px",
-        gap: "50px",
+        justifyContent: "center",
+        padding: "0 8%",
       }}
     >
-      {/* Left Content */}
-
       <div
         style={{
-          flex: 1,
+          textAlign: "center",
+          maxWidth: "1000px",
         }}
       >
         <h1
           style={{
             color: "#fff",
-            fontSize: "65px",
-            fontWeight: "700",
-            lineHeight: "1.15",
-            marginBottom: "20px",
+            fontSize: "75px",
+            fontWeight: "800",
+            lineHeight: "1.2",
+            marginBottom: "25px",
+            textShadow:
+              "0px 4px 15px rgba(0,0,0,0.6)",
           }}
         >
           Explore The World
@@ -47,27 +56,29 @@ function Hero() {
 
         <p
           style={{
-            color: "#ccc",
-            fontSize: "20px",
+            color: "#f5f5f5",
+            fontSize: "22px",
             lineHeight: "1.8",
-            maxWidth: "650px",
-            marginBottom: "30px",
+            maxWidth: "850px",
+            margin: "0 auto 35px",
           }}
         >
-          Discover beautiful destinations,
-          luxury tours, customized travel
-          experiences and unforgettable
-          adventures around the globe.
+          Discover breathtaking destinations,
+          luxury vacations, adventure tours,
+          family getaways and unforgettable
+          travel experiences crafted specially
+          for you.
         </p>
 
-        {/* Feature Highlights */}
+        {/* Feature Tags */}
 
         <div
           style={{
             display: "flex",
+            justifyContent: "center",
             flexWrap: "wrap",
             gap: "15px",
-            marginBottom: "35px",
+            marginBottom: "40px",
           }}
         >
           <div style={featureStyle}>
@@ -87,91 +98,161 @@ function Hero() {
           </div>
         </div>
 
+        {/* Special Feature */}
+
         <div
           style={{
-            background: "#111",
-            borderLeft: "4px solid #f4b400",
-            padding: "15px",
-            borderRadius: "10px",
-            marginBottom: "30px",
-            maxWidth: "600px",
+            background:
+              "rgba(255,255,255,0.08)",
+            backdropFilter: "blur(8px)",
+            border:
+              "1px solid rgba(244,180,0,0.4)",
+            padding: "20px",
+            borderRadius: "15px",
+            maxWidth: "700px",
+            margin: "0 auto 40px",
           }}
         >
-          <h4
+          <h3
             style={{
               color: "#f4b400",
-              marginBottom: "8px",
+              marginBottom: "10px",
             }}
           >
-            Special Feature
-          </h4>
+            🌟 Customize Your Dream Trip
+          </h3>
 
           <p
             style={{
-              color: "#ccc",
+              color: "#f1f1f1",
               margin: 0,
+              lineHeight: "1.7",
             }}
           >
-            Plan your journey your way. Tell us your
-            destination, budget, travel dates and
-            preferences, and we'll create a completely
-            personalized travel package for you.
+            Tell us your destination, budget,
+            travel dates and preferences.
+            TripNest will create a completely
+            personalized package tailored just
+            for you.
           </p>
         </div>
 
-        <Link to="/packages">
-          <button
-            style={{
-              background: "#f4b400",
-              color: "#000",
-              border: "none",
-              padding: "16px 35px",
-              borderRadius: "40px",
-              fontWeight: "bold",
-              fontSize: "16px",
-              cursor: "pointer",
-            }}
-          >
-            EXPLORE TOURS
-          </button>
-        </Link>
-      </div>
+        {/* Buttons */}
 
-      {/* Right Image */}
-
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <img
-          src={heroImage}
-          alt="Travel"
+        <div
           style={{
-            width: "100%",
-            maxWidth: "700px",
-            height: "430px",
-            objectFit: "cover",
-            borderRadius: "25px",
-            boxShadow:
-              "0 0 35px rgba(244,180,0,0.25)",
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            flexWrap: "wrap",
           }}
-        />
+        >
+          <Link to="/packages">
+            <button
+              style={{
+                background: "#f4b400",
+                color: "#000",
+                border: "none",
+                padding: "16px 40px",
+                borderRadius: "50px",
+                fontWeight: "bold",
+                fontSize: "16px",
+                cursor: "pointer",
+                transition: "0.3s",
+              }}
+            >
+              Explore Tours
+            </button>
+          </Link>
+
+          <Link to="/customize">
+            <button
+              style={{
+                background: "transparent",
+                color: "#fff",
+                border:
+                  "2px solid #f4b400",
+                padding: "16px 40px",
+                borderRadius: "50px",
+                fontWeight: "bold",
+                fontSize: "16px",
+                cursor: "pointer",
+              }}
+            >
+              Customize Trip
+            </button>
+          </Link>
+        </div>
+
+        {/* Statistics */}
+
+        <div
+          style={{
+            marginTop: "60px",
+            display: "flex",
+            justifyContent: "center",
+            gap: "60px",
+            flexWrap: "wrap",
+          }}
+        >
+          <div>
+            <h2
+              style={{
+                color: "#f4b400",
+                margin: 0,
+              }}
+            >
+              500+
+            </h2>
+
+            <p style={{ color: "#fff" }}>
+              Destinations
+            </p>
+          </div>
+
+          <div>
+            <h2
+              style={{
+                color: "#f4b400",
+                margin: 0,
+              }}
+            >
+              10K+
+            </h2>
+
+            <p style={{ color: "#fff" }}>
+              Happy Travelers
+            </p>
+          </div>
+
+          <div>
+            <h2
+              style={{
+                color: "#f4b400",
+                margin: 0,
+              }}
+            >
+              24/7
+            </h2>
+
+            <p style={{ color: "#fff" }}>
+              Customer Support
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
 const featureStyle = {
-  background: "#111",
-  color: "#f4b400",
-  padding: "10px 18px",
+  background: "rgba(255,255,255,0.1)",
+  color: "#fff",
+  padding: "12px 20px",
   borderRadius: "30px",
-  border: "1px solid #333",
-  fontSize: "14px",
+  border: "1px solid rgba(255,255,255,0.2)",
   fontWeight: "600",
+  backdropFilter: "blur(5px)",
 };
 
 export default Hero;

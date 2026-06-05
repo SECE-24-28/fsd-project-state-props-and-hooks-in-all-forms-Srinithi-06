@@ -5,9 +5,9 @@ function Footer() {
   return (
     <footer
       style={{
-        background: "#000",
+        background: "#050505",
         color: "white",
-        padding: "50px 8%",
+        padding: "70px 8% 25px",
         borderTop: "1px solid #222",
       }}
     >
@@ -16,17 +16,20 @@ function Footer() {
           display: "grid",
           gridTemplateColumns:
             "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "30px",
+          gap: "50px",
         }}
       >
+        {/* Company Info */}
+
         <div>
-          <h2
+          <h1
             style={{
               color: "#f4b400",
+              marginBottom: "20px",
             }}
           >
             TripNest
-          </h2>
+          </h1>
 
           <p
             style={{
@@ -35,78 +38,199 @@ function Footer() {
             }}
           >
             Explore the world with comfort,
-            safety and unforgettable
-            travel experiences.
+            luxury and unforgettable travel
+            experiences. We provide customized
+            tours, family trips, adventure
+            packages and international vacations.
           </p>
+
+          <div
+            style={{
+              display: "flex",
+              gap: "15px",
+              marginTop: "25px",
+              fontSize: "24px",
+            }}
+          >
+            <span style={socialStyle}>📘</span>
+            <span style={socialStyle}>📸</span>
+            <span style={socialStyle}>🐦</span>
+            <span style={socialStyle}>▶️</span>
+          </div>
         </div>
+
+        {/* Quick Links */}
 
         <div>
           <h3
             style={{
               color: "#f4b400",
+              marginBottom: "20px",
             }}
           >
             Quick Links
           </h3>
 
           <p>
-            <Link
-              to="/terms"
-              style={linkStyle}
-            >
-              Terms & Conditions
+            <Link to="/" style={linkStyle}>
+              Home
             </Link>
           </p>
 
           <p>
             <Link
-              to="/privacy"
+              to="/packages"
               style={linkStyle}
             >
-              Privacy Policy
+              Packages
+            </Link>
+          </p>
+
+          <p>
+            <Link
+              to="/customize"
+              style={linkStyle}
+            >
+              Customize Trip
+            </Link>
+          </p>
+
+          <p>
+            <Link
+              to="/contact"
+              style={linkStyle}
+            >
+              Contact
             </Link>
           </p>
         </div>
+
+        {/* Categories */}
 
         <div>
           <h3
             style={{
               color: "#f4b400",
+              marginBottom: "20px",
             }}
           >
-            Contact
+            Categories
           </h3>
 
-          <p>support@tripnest.com</p>
+          <p style={textStyle}>
+            International Tours
+          </p>
 
-          <p>+91 9876543210</p>
+          <p style={textStyle}>
+            Family Packages
+          </p>
 
-          <p>Chennai, Tamil Nadu</p>
+          <p style={textStyle}>
+            Adventure Trips
+          </p>
+
+          <p style={textStyle}>
+            Friends Tours
+          </p>
+
+          <p style={textStyle}>
+            Honeymoon Packages
+          </p>
+        </div>
+
+        {/* Contact */}
+
+        <div>
+          <h3
+            style={{
+              color: "#f4b400",
+              marginBottom: "20px",
+            }}
+          >
+            Contact Us
+          </h3>
+
+          <p style={textStyle}>
+            📧 support@tripnest.com
+          </p>
+
+          <p style={textStyle}>
+            📞 +91 9876543210
+          </p>
+
+          <p style={textStyle}>
+            📍 Chennai, Tamil Nadu, India
+          </p>
+
+          <p style={textStyle}>
+            🕒 24/7 Customer Support
+          </p>
         </div>
       </div>
 
-      <hr
-        style={{
-          margin: "30px 0",
-          borderColor: "#222",
-        }}
-      />
+      {/* Terms & Privacy */}
 
-      <p
+      <div
         style={{
-          textAlign: "center",
-          color: "#888",
+          marginTop: "50px",
+          paddingTop: "25px",
+          borderTop: "1px solid #222",
+          display: "flex",
+          justifyContent: "center",
+          gap: "40px",
+          flexWrap: "wrap",
         }}
       >
-        © 2026 TripNest | All Rights Reserved
-      </p>
+        <Link
+          to="/terms"
+          style={bottomLink}
+        >
+          Terms & Conditions
+        </Link>
+
+        <Link
+          to="/privacy"
+          style={bottomLink}
+        >
+          Privacy Policy
+        </Link>
+      </div>
+
+      {/* Copyright */}
+
+      <div
+        style={{
+          marginTop: "20px",
+          textAlign: "center",
+          color: "#888",
+          fontSize: "14px",
+        }}
+      >
+        © 2026 TripNest. All Rights Reserved.
+      </div>
     </footer>
   );
 }
 
 const linkStyle = {
-  color: "white",
+  color: "#ccc",
   textDecoration: "none",
+  lineHeight: "2.2",
+};
+
+const bottomLink = {
+  color: "#f4b400",
+  textDecoration: "none",
+  fontWeight: "600",
+};
+
+const textStyle = {
+  color: "#ccc",
+  lineHeight: "2",
+};
+
+const socialStyle = {
+  cursor: "pointer",
 };
 
 export default Footer;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import CategoryNavbar from "../Components/CategoryNavbar";
 
 function MyBookings() {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ function MyBookings() {
         padding: "60px 8%",
       }}
     >
+      <CategoryNavbar />
       <h1
         style={{
           textAlign: "center",

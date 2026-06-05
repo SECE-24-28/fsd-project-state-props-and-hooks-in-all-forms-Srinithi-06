@@ -3,24 +3,28 @@ import React from "react";
 function About() {
   const features = [
     {
+      icon: "🎯",
       title: "Customized Tours",
       desc:
-        "Travel plans designed according to your budget and preferences.",
+        "Travel plans designed according to your budget, destination preferences and travel style.",
     },
     {
+      icon: "💰",
       title: "Affordable Pricing",
       desc:
-        "Best travel experiences at competitive prices.",
+        "Get premium travel experiences at competitive prices without compromising quality.",
     },
     {
+      icon: "📞",
       title: "24/7 Support",
       desc:
-        "Dedicated customer support throughout your journey.",
+        "Dedicated customer support available anytime before, during and after your trip.",
     },
     {
+      icon: "🧑‍✈️",
       title: "Trusted Guides",
       desc:
-        "Professional travel experts and verified tour guides.",
+        "Professional and verified travel guides ensuring a safe and enjoyable experience.",
     },
   ];
 
@@ -28,41 +32,47 @@ function About() {
     <section
       id="about"
       style={{
-        background: "#111",
+        background: "#000",
         color: "white",
         padding: "100px 8%",
       }}
     >
-      <h2
+      <div
         style={{
           textAlign: "center",
-          color: "#f4b400",
-          fontSize: "50px",
-          marginBottom: "20px",
+          marginBottom: "70px",
         }}
       >
-        Why Choose TripNest?
-      </h2>
+        <h2
+          style={{
+            color: "#f4b400",
+            fontSize: "55px",
+            marginBottom: "20px",
+          }}
+        >
+          Why Choose TripNest?
+        </h2>
 
-      <h3
-        style={{
-          textAlign: "center",
-          color: "#ccc",
-          maxWidth: "800px",
-          margin: "0 auto 50px",
-          
-        }}
-      >
-        We create memorable travel experiences with
-        premium destinations, customized packages and
-        exceptional customer support.
-      </h3>
+        <p
+          style={{
+            color: "#ccc",
+            fontSize: "22px",
+            maxWidth: "900px",
+            margin: "auto",
+            lineHeight: "1.8",
+          }}
+        >
+          We create unforgettable travel experiences
+          through premium destinations, personalized
+          itineraries and world-class customer support.
+        </p>
+      </div>
 
       <div
         style={{
           display: "grid",
           gridTemplateColumns:
-            "repeat(auto-fit,minmax(300px,1fr))",
+            "repeat(auto-fit,minmax(450px,1fr))",
           gap: "30px",
         }}
       >
@@ -70,15 +80,45 @@ function About() {
           <div
             key={index}
             style={{
-              background: "#811e1e",
-              padding: "40px",
-              borderRadius: "20px",
-              border: "1px solid #bc1212",
+              background: "#111",
+              border: "1px solid #2a2a2a",
+              borderRadius: "25px",
+              padding: "35px",
+              transition: "0.3s",
+              cursor: "pointer",
+              boxShadow:
+                "0 0 20px rgba(244,180,0,0.08)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(-10px)";
+              e.currentTarget.style.border =
+                "1px solid #f4b400";
+              e.currentTarget.style.boxShadow =
+                "0 0 30px rgba(244,180,0,0.25)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(0)";
+              e.currentTarget.style.border =
+                "1px solid #2a2a2a";
+              e.currentTarget.style.boxShadow =
+                "0 0 20px rgba(244,180,0,0.08)";
             }}
           >
+            <div
+              style={{
+                fontSize: "50px",
+                marginBottom: "15px",
+              }}
+            >
+              {item.icon}
+            </div>
+
             <h3
               style={{
                 color: "#f4b400",
+                fontSize: "32px",
                 marginBottom: "15px",
               }}
             >
@@ -88,12 +128,89 @@ function About() {
             <p
               style={{
                 color: "#ccc",
+                fontSize: "18px",
+                lineHeight: "1.8",
               }}
             >
               {item.desc}
             </p>
           </div>
         ))}
+      </div>
+
+      <div
+        style={{
+          marginTop: "40px",
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(auto-fit,minmax(200px,1fr))",
+          gap: "25px",
+          textAlign: "center",
+        }}
+      >
+        <div>
+          <h2
+            style={{
+              color: "#f4b400",
+              fontSize: "45px",
+              marginBottom: "10px",
+            }}
+          >
+            500+
+          </h2>
+
+          <p style={{ color: "#ccc" }}>
+            Destinations
+          </p>
+        </div>
+
+        <div>
+          <h2
+            style={{
+              color: "#f4b400",
+              fontSize: "45px",
+              marginBottom: "10px",
+            }}
+          >
+            10K+
+          </h2>
+
+          <p style={{ color: "#ccc" }}>
+            Happy Travelers
+          </p>
+        </div>
+
+        <div>
+          <h2
+            style={{
+              color: "#f4b400",
+              fontSize: "45px",
+              marginBottom: "10px",
+            }}
+          >
+            24/7
+          </h2>
+
+          <p style={{ color: "#ccc" }}>
+            Customer Support
+          </p>
+        </div>
+
+        <div>
+          <h2
+            style={{
+              color: "#f4b400",
+              fontSize: "45px",
+              marginBottom: "10px",
+            }}
+          >
+            100%
+          </h2>
+
+          <p style={{ color: "#ccc" }}>
+            Satisfaction
+          </p>
+        </div>
       </div>
     </section>
   );

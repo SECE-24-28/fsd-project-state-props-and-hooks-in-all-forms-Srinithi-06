@@ -8,7 +8,7 @@ import gokarna from "../Assets/Images/gorkana.jpg";
 import manali from "../Assets/Images/Manali.jpg";
 import kasol from "../Assets/Images/kasoli.jpg";
 import rishikesh from "../Assets/Images/rishikesh.jpg";
-
+import friends from "../Assets/Images/friends-bg.jpeg";
 
 function Friends() {
 const tours = [
@@ -72,50 +72,118 @@ color: "white",
 }}
 > <CategoryNavbar />
 
-```
+
   <section
+  style={{
+    height: "60vh",
+    backgroundImage: `linear-gradient(
+      rgba(0,0,0,0.65),
+      rgba(0,0,0,0.75)
+    ),
+    url(${friends})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "0 8%",
+  }}
+>
+  <h1
     style={{
-      padding: "100px 8%",
-      textAlign: "center",
-      background:
-        "linear-gradient(to right,#000,#111)",
+      color: "#fff",
+      fontSize: "72px",
+      fontWeight: "700",
+      marginBottom: "20px",
+      textShadow:
+        "0 0 20px rgba(0,0,0,0.6)",
     }}
   >
-    <h1
-      style={{
-        color: "#f4b400",
-        fontSize: "60px",
-        marginBottom: "20px",
-      }}
-    >
       Friends Tours
     </h1>
 
     <p
-      style={{
-        color: "#ccc",
-        fontSize: "20px",
-        maxWidth: "900px",
-        margin: "auto",
-      }}
-    >
-      Travel better together and create unforgettable memories with friends.
-    </p>
-  </section>
-
-  <section
     style={{
-      padding: "60px 8%",
+      color: "#eee",
+      fontSize: "22px",
+      maxWidth: "900px",
+      lineHeight: "1.8",
     }}
   >
-   <div
+      Travel better together and create unforgettable memories with friends.
+    </p>
+
+  </section>
+  <section
   style={{
-    display: "grid",
-    gridTemplateColumns:
-      "repeat(auto-fit,minmax(320px,1fr))",
-    gap: "30px",
+    padding: "40px 8%",
+    background: "#080808",
   }}
 >
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns:
+        "repeat(auto-fit,minmax(200px,1fr))",
+      gap: "25px",
+      textAlign: "center",
+    }}
+  >
+    {/* Replace values according to page */}
+
+    <div>
+      <h1 style={{ color: "#f4b400" }}>
+        500+
+      </h1>
+      <p style={{ color: "#ccc" }}>
+        Travelers
+      </p>
+    </div>
+
+    <div>
+      <h1 style={{ color: "#f4b400" }}>
+        100+
+      </h1>
+      <p style={{ color: "#ccc" }}>
+        Destinations
+      </p>
+    </div>
+
+    <div>
+      <h1 style={{ color: "#f4b400" }}>
+        4.9★
+      </h1>
+      <p style={{ color: "#ccc" }}>
+        Ratings
+      </p>
+    </div>
+
+    <div>
+      <h1 style={{ color: "#f4b400" }}>
+        24/7
+      </h1>
+      <p style={{ color: "#ccc" }}>
+        Support
+      </p>
+    </div>
+  </div>
+</section>
+<section
+  style={{
+    padding: "60px 8%",
+    background: "#000",
+  }}
+>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns:
+        "repeat(auto-fit,minmax(350px,1fr))",
+      gap: "30px",
+    }}
+  >
   {/* Default Packages */}
 
   {tours.map((tour) => (

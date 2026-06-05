@@ -89,13 +89,16 @@ function PackageCard({
 
   return (
     <div
-      style={{
-        background: "#111",
-        borderRadius: "20px",
-        overflow: "hidden",
-        border: "1px solid #222",
-        transition: "0.3s",
-      }}
+    style={{
+  background:
+    "linear-gradient(145deg,#111,#181818)",
+  borderRadius: "25px",
+  overflow: "hidden",
+  border: "1px solid rgba(244,180,0,0.15)",
+  boxShadow:
+    "0 10px 30px rgba(0,0,0,0.4)",
+  transition: "0.4s",
+}}
     >
       <img
         src={image}
