@@ -1,72 +1,73 @@
-import React, {  useEffect,  useState,} from "react";
+import React, { useEffect, useState } from "react";
+import api from "../../Services/api";
 import logo from "../../Assets/Images/tripnest logo.png";
 
 function DashboardOverview() {
-  const [packages, setPackages] =
-    useState([]);
+  const [packages, setPackages] = useState([]);
+  const [bookings, setBookings] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [customTrips, setCustomTrips] = useState([]);
 
-  const [bookings, setBookings] =
-    useState([]);
-
-  const [users, setUsers] =
-    useState([]);
-
-  const [customTrips, setCustomTrips] =
-    useState([]);
-const [selectedCategory, setSelectedCategory] =  useState("All");
+  const [selectedCategory, setSelectedCategory] =
+    useState("All");
 
   const [search, setSearch] =
     useState("");
 
   useEffect(() => {
-    setPackages(
-      JSON.parse(
-        localStorage.getItem("packages")
-      ) || []
-    );
-
-    setBookings(
-      JSON.parse(
-        localStorage.getItem("bookings")
-      ) || []
-    );
-
-    setUsers(
-      JSON.parse(
-        localStorage.getItem("tripnestUsers")
-      ) || []
-    );
-
-    setCustomTrips(
-      JSON.parse(
-        localStorage.getItem(
-          "customTripRequests"
-        )
-      ) || []
-    );
+    fetchDashboardData();
   }, []);
+
+  const fetchDashboardData =
+    async () => {
+      try {
+        const [
+          packageRes,
+          bookingRes,
+          userRes,
+          customTripRes,
+        ] = await Promise.all([
+          api.get("/packages"),
+          api.get("/bookings"),
+          api.get("/users"),
+          api.get("/customtrips"),
+        ]);
+
+        setPackages(packageRes.data || []);
+        setBookings(bookingRes.data || []);
+        setUsers(userRes.data || []);
+        setCustomTrips(
+          customTripRes.data || []
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
   const filteredPackages =
     packages.filter((pkg) =>
-      pkg.name
-        ?.toLowerCase()
+      (
+        pkg.packageName ||
+        pkg.name ||
+        ""
+      )
+        .toLowerCase()
         .includes(
           search.toLowerCase()
         )
     );
-    const displayedPackages =
-  selectedCategory === "All"
-    ? packages
-    : packages.filter(
-        (pkg) =>
-          pkg.category ===
-          selectedCategory
-      );
+
+  const displayedPackages =
+    selectedCategory === "All"
+      ? packages
+      : packages.filter(
+          (pkg) =>
+            pkg.category ===
+            selectedCategory
+        );
 
   return (
     <>
-      {/* Header */}
-
       <div
         style={{
           display: "flex",
@@ -138,8 +139,6 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
         </div>
       </div>
 
-      {/* Search */}
-
       <input
         type="text"
         placeholder="Search Packages..."
@@ -173,22 +172,18 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
             }}
           >
             {filteredPackages.map(
-              (
-                pkg,
-                index
-              ) => (
+              (pkg) => (
                 <div
-                  key={index}
+                  key={pkg._id}
                   style={cardStyle}
                 >
                   <h3>
-                    {pkg.name}
+                    {pkg.packageName ||
+                      pkg.name}
                   </h3>
 
                   <p>
-                    {
-                      pkg.category
-                    }
+                    {pkg.category}
                   </p>
                 </div>
               )
@@ -197,72 +192,16 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
         </>
       )}
 
-      {/* Category Statistics */}
-
-     <h2
-  style={{
-    color: "#f4b400",
-    marginBottom: "20px",
-  }}
->
-  Package Categories
-</h2>
-
-<div
-  style={{
-    display: "grid",
-    gridTemplateColumns:
-      "repeat(auto-fit,minmax(220px,1fr))",
-    gap: "20px",
-    marginBottom: "40px",
-  }}
->
-  {[
-    "All",
-    "International",
-    "Family",
-    "Friends",
-    "Adventure",
-    "Honeymoon",
-  ].map((category) => (
-    <div
-      key={category}
-      onClick={() =>
-        setSelectedCategory(category)
-      }
-      style={{
-        background:
-          selectedCategory === category
-            ? "#f4b400"
-            : "#111",
-
-        color:
-          selectedCategory === category
-            ? "#000"
-            : "#fff",
-
-        padding: "25px",
-        borderRadius: "15px",
-        textAlign: "center",
-        cursor: "pointer",
-        border: "1px solid #f4b400",
-        transition: "0.3s",
-      }}
-    >
-      <h3>{category}</h3>
-
-      <h2>
-        {category === "All"
-          ? packages.length
-          : packages.filter(
-              (pkg) =>
-                pkg.category === category
-            ).length}
+      <h2
+        style={{
+          color: "#f4b400",
+          marginBottom: "20px",
+        }}
+      >
+        Package Categories
       </h2>
-    </div>
-  ))}
-</div>
-  { /*   <div
+
+      <div
         style={{
           display: "grid",
           gridTemplateColumns:
@@ -271,61 +210,56 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
           marginBottom: "40px",
         }}
       >
-      
-        <div style={cardStyle}>
-          <h3>👨‍👩‍👧 Family</h3>
-          <h2>
-            {
-              packages.filter(
-                (pkg) =>
-                  pkg.category ===
-                  "Family"
-              ).length
+        {[
+          "All",
+          "International",
+          "Family",
+          "Friends",
+          "Adventure",
+          "Honeymoon",
+        ].map((category) => (
+          <div
+            key={category}
+            onClick={() =>
+              setSelectedCategory(
+                category
+              )
             }
-          </h2>
-        </div>
+            style={{
+              background:
+                selectedCategory ===
+                category
+                  ? "#f4b400"
+                  : "#111",
 
-        <div style={cardStyle}>
-          <h3>🎉 Friends</h3>
-          <h2>
-            {
-              packages.filter(
-                (pkg) =>
-                  pkg.category ===
-                  "Friends"
-              ).length
-            }
-          </h2>
-        </div>
+              color:
+                selectedCategory ===
+                category
+                  ? "#000"
+                  : "#fff",
 
-        <div style={cardStyle}>
-          <h3>🏔 Adventure</h3>
-          <h2>
-            {
-              packages.filter(
-                (pkg) =>
-                  pkg.category ===
-                  "Adventure"
-              ).length
-            }
-          </h2>
-        </div>
+              padding: "25px",
+              borderRadius: "15px",
+              textAlign: "center",
+              cursor: "pointer",
+              border:
+                "1px solid #f4b400",
+            }}
+          >
+            <h3>{category}</h3>
 
-        <div style={cardStyle}>
-          <h3>❤️ Honeymoon</h3>
-          <h2>
-            {
-              packages.filter(
-                (pkg) =>
-                  pkg.category ===
-                  "Honeymoon"
-              ).length
-            }
-          </h2>
-        </div>
-      </div>*/}
-
-      {/* Available Packages */}
+            <h2>
+              {category === "All"
+                ? packages.length
+                : packages.filter(
+                    (pkg) =>
+                      pkg.category ===
+                      category
+                  ).length}
+            </h2>
+          </div>
+        ))}
+      </div>
 
       <h2
         style={{
@@ -345,10 +279,10 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
           marginBottom: "50px",
         }}
       >
-       {displayedPackages.map(
-  (pkg, index) => (
+        {displayedPackages.map(
+          (pkg) => (
             <div
-              key={index}
+              key={pkg._id}
               style={{
                 background:
                   "#111",
@@ -358,17 +292,15 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
                   "hidden",
                 border:
                   "1px solid #333",
-                boxShadow:
-                  "0 0 15px rgba(244,180,0,0.15)",
               }}
             >
-              {pkg.image && (
+              {pkg.packageImage && (
                 <img
                   src={
-                    pkg.image
+                    pkg.packageImage
                   }
                   alt={
-                    pkg.name
+                    pkg.packageName
                   }
                   style={{
                     width:
@@ -394,36 +326,19 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
                   }}
                 >
                   {
-                    pkg.name
+                    pkg.packageName
                   }
                 </h3>
 
                 <p>
-                  <strong>
-                    Category:
-                  </strong>{" "}
                   {
                     pkg.category
                   }
                 </p>
 
                 <p>
-                  <strong>
-                    Duration:
-                  </strong>{" "}
                   {
                     pkg.duration
-                  }
-                </p>
-
-                <p
-                  style={{
-                    color:
-                      "#ccc",
-                  }}
-                >
-                  {
-                    pkg.description
                   }
                 </p>
 
@@ -433,17 +348,13 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
                       "#28a745",
                   }}
                 >
-                  {
-                    pkg.price
-                  }
+                  {pkg.price}
                 </h4>
               </div>
             </div>
           )
         )}
       </div>
-
-      {/* Recent Bookings */}
 
       <h2
         style={{
@@ -457,40 +368,28 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
       {bookings
         .slice(-3)
         .reverse()
-        .map(
-          (
-            booking,
-            index
-          ) => (
-            <div
-              key={index}
-              style={
-                listCard
+        .map((booking) => (
+          <div
+            key={booking._id}
+            style={listCard}
+          >
+            <strong>
+              {
+                booking.packageName
               }
-            >
-              <strong>
-                {
-                  booking.name
-                }
-              </strong>
+            </strong>
 
-              <p>
-                {
-                  booking.customerName
-                }
-              </p>
+            <p>
+              {booking.userName}
+            </p>
 
-              <p>
-                Status:
-                {" "}
-                {booking.status ||
-                  "Pending"}
-              </p>
-            </div>
-          )
-        )}
-
-      {/* Recent Custom Trips */}
+            <p>
+              Status:
+              {" "}
+              {booking.status}
+            </p>
+          </div>
+        ))}
 
       <h2
         style={{
@@ -505,38 +404,28 @@ const [selectedCategory, setSelectedCategory] =  useState("All");
       {customTrips
         .slice(-3)
         .reverse()
-        .map(
-          (
-            trip,
-            index
-          ) => (
-            <div
-              key={index}
-              style={
-                listCard
+        .map((trip) => (
+          <div
+            key={trip._id}
+            style={listCard}
+          >
+            <strong>
+              {
+                trip.destination
               }
-            >
-              <strong>
-                {
-                  trip.destination
-                }
-              </strong>
+            </strong>
 
-              <p>
-                {
-                  trip.userName
-                }
-              </p>
+            <p>
+              {trip.userName}
+            </p>
 
-              <p>
-                Status:
-                {" "}
-                {trip.status ||
-                  "Pending"}
-              </p>
-            </div>
-          )
-        )}
+            <p>
+              Status:
+              {" "}
+              {trip.status}
+            </p>
+          </div>
+        ))}
     </>
   );
 }
