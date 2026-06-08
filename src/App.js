@@ -16,6 +16,7 @@ import Customize from "./Pages/Customize";
 import TermsConditions from "./Pages/TermsConditions";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
+import ForgotPassword from "./Pages/ForgotPassword";
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
         <Route path="/terms" element={<TermsConditions />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route  path="/forgot-password"   element={<ForgotPassword />}
+/>
       </Routes>
     </BrowserRouter>
   );
