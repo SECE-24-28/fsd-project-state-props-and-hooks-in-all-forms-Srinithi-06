@@ -5,34 +5,70 @@ import api from "../Services/api";
 function Signup() {
   const navigate = useNavigate();
 
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-const [loading, setLoading] = useState(false);
- const handleSignup = async (e) => {
-  e.preventDefault();
+  const [firstName, setFirstName] =
+    useState("");
 
-  setLoading(true);
+  const [lastName, setLastName] =
+    useState("");
 
-  try {
-    await api.post("/users/signup", {
-      fullname,
-      email,
-      password,
-    });
+  const [email, setEmail] =
+    useState("");
 
-    alert("Account Created Successfully");
-    navigate("/login");
-  } catch (error) {
-    alert(
-      error.response?.data?.message ||
-      "Signup Failed"
-    );
-  } finally {
-    setLoading(false);
-  }
-};
+  const [password, setPassword] =
+    useState("");
+
+  const [
+    confirmPassword,
+    setConfirmPassword,
+  ] = useState("");
+
+  const [loading, setLoading] =
+    useState(false);
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert(
+        "Password and Confirm Password do not match"
+      );
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      console.log("Signup Data:", {
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+
+      await api.post("/users/signup", {
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+
+      alert(
+        "Account Created Successfully"
+      );
+
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+
+      alert(
+        error.response?.data?.message ||
+          "Signup Failed"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div
       style={{
@@ -44,34 +80,33 @@ const [loading, setLoading] = useState(false);
         position: "relative",
       }}
     >
-    
-          <Link
-      to="/"
-      style={{
-        position: "absolute",
-        top: "30px",
-        left: "30px",
-        textDecoration: "none",
-      }}
-    >
-      <button
+      <Link
+        to="/"
         style={{
-          background: "#f4b400",
-          color: "#000",
-          border: "none",
-          padding: "12px 25px",
-          borderRadius: "30px",
-          fontWeight: "bold",
-          cursor: "pointer",
-          fontSize: "15px",
-          boxShadow:
-            "0 0 15px rgba(244,180,0,0.3)",
-          transition: "0.3s",
+          position: "absolute",
+          top: "30px",
+          left: "30px",
+          textDecoration: "none",
         }}
       >
-        ← Home
-      </button>
-    </Link>
+        <button
+          style={{
+            background: "#f4b400",
+            color: "#000",
+            border: "none",
+            padding: "12px 25px",
+            borderRadius: "30px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            fontSize: "15px",
+            boxShadow:
+              "0 0 15px rgba(244,180,0,0.3)",
+          }}
+        >
+          ← Home
+        </button>
+      </Link>
+
       <div
         style={{
           width: "450px",
@@ -106,10 +141,25 @@ const [loading, setLoading] = useState(false);
         <form onSubmit={handleSignup}>
           <input
             type="text"
-            placeholder="Full Name"
-            value={fullname}
+            placeholder="First Name"
+            value={firstName}
             onChange={(e) =>
-              setFullname(e.target.value)
+              setFirstName(
+                e.target.value
+              )
+            }
+            required
+            style={inputStyle}
+          />
+
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) =>
+              setLastName(
+                e.target.value
+              )
             }
             required
             style={inputStyle}
@@ -120,7 +170,9 @@ const [loading, setLoading] = useState(false);
             placeholder="Email"
             value={email}
             onChange={(e) =>
-              setEmail(e.target.value)
+              setEmail(
+                e.target.value
+              )
             }
             required
             style={inputStyle}
@@ -131,7 +183,9 @@ const [loading, setLoading] = useState(false);
             placeholder="Password"
             value={password}
             onChange={(e) =>
-              setPassword(e.target.value)
+              setPassword(
+                e.target.value
+              )
             }
             required
             style={inputStyle}
@@ -142,48 +196,50 @@ const [loading, setLoading] = useState(false);
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) =>
-              setConfirmPassword(e.target.value)
+              setConfirmPassword(
+                e.target.value
+              )
             }
             required
             style={inputStyle}
           />
 
-         <button
-  type="submit"
-  disabled={loading}
-  style={{
-    width: "100%",
-    padding: "15px",
-    border: "none",
-    borderRadius: "10px",
-    background: loading
-      ? "#888"
-      : "#f4b400",
-    color: "#000",
-    fontWeight: "bold",
-    cursor: loading
-      ? "not-allowed"
-      : "pointer",
-    fontSize: "16px",
-    transition: "0.3s",
-  }}
->
-  {loading
-    ? "Creating Account..."
-    : "Create Account"}
-</button>
+          <button
+            type="submit"
+            disabled={loading}
+            style={{
+              width: "100%",
+              padding: "15px",
+              border: "none",
+              borderRadius: "10px",
+              background: loading
+                ? "#888"
+                : "#f4b400",
+              color: "#000",
+              fontWeight: "bold",
+              cursor: loading
+                ? "not-allowed"
+                : "pointer",
+              fontSize: "16px",
+            }}
+          >
+            {loading
+              ? "Creating Account..."
+              : "Create Account"}
+          </button>
         </form>
+
         {loading && (
-  <p
-    style={{
-      color: "#f4b400",
-      textAlign: "center",
-      marginTop: "15px",
-    }}
-  >
-    Creating your account...
-  </p>
-)}
+          <p
+            style={{
+              color: "#f4b400",
+              textAlign: "center",
+              marginTop: "15px",
+            }}
+          >
+            Creating your account...
+          </p>
+        )}
 
         <div
           style={{
@@ -191,7 +247,11 @@ const [loading, setLoading] = useState(false);
             marginTop: "20px",
           }}
         >
-          <span style={{ color: "#fff" }}>
+          <span
+            style={{
+              color: "#fff",
+            }}
+          >
             Already have an account?
           </span>
 
